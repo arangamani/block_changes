@@ -1,5 +1,6 @@
 Block Changes
 =============
+[![Build Status](https://travis-ci.org/arangamani/block_changes.png?branch=master)](https://travis-ci.org/arangamani/block_changes)
 
 Detecting changes in a Ruby block
 ---------------------------------
