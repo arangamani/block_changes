@@ -12,7 +12,7 @@
   <script type="text/javascript" src="javascripts/script.js"></script>
 
   <title>Block changes</title>
-  <meta name="description" content="">
+  <meta name="description" content="block changes ruby">
 
   <meta name="viewport" content="width=device-width,initial-scale=1">
 
@@ -25,7 +25,7 @@
       <h1 class="title">Block changes</h1>
     </header>
     <div id="container">
-      <p class="tagline"></p>
+      <p class="tagline">block changes ruby</p>
       <div id="main" role="main">
         <div class="download-bar">
         <div class="inner">
@@ -36,7 +36,33 @@
         <span class="blc"></span><span class="trc"></span>
         </div>
         <article class="markdown-body">
-          <h1>block_changes</h1>
+          <h1>Block Changes</h1>
+
+<h2>Detecting changes in a Ruby block</h2>
+
+<p>The following example illustrates how to see if changes are detected in a Ruby block for the expected variables. Variables a, b, c are concerned in this example. If these variables are changed <code>changes_detected?</code> will return true. If these variables are not changes in the block <code>changes_detected?</code> will return false. This will be helpful to maintain idempotency. The following example is very simple. We'll know what variables we concern about when we write the code so passing those variables to the code will not be hard. Also we might not want to detect changes of local temporary variables defined inside the block.</p>
+
+<div class="highlight"><pre><span class="nb">require</span> <span class="s1">'block_changes'</span>
+
+<span class="kp">include</span> <span class="no">BlockChanges</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">c</span> <span class="o">=</span> <span class="mi">3</span>
+
+<span class="c1"># Note that the variable names are in quotes and it is required.</span>
+<span class="n">detect_changes</span><span class="p">(</span><span class="s1">'a'</span><span class="p">,</span> <span class="s1">'b'</span><span class="p">,</span> <span class="s1">'c'</span><span class="p">)</span> <span class="k">do</span>
+  <span class="n">a</span> <span class="o">=</span> <span class="mi">2</span>
+  <span class="n">b</span> <span class="o">=</span> <span class="mi">3</span>
+  <span class="n">c</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="k">end</span>
+
+<span class="c1"># Check if changes are detected in the block</span>
+<span class="nb">puts</span> <span class="s2">"Changes Detected"</span> <span class="k">if</span> <span class="n">changes_detected?</span>
+
+<span class="c1"># Check the number variables changed in the block</span>
+<span class="nb">puts</span> <span class="s2">"No of changes: </span><span class="si">#{</span><span class="n">get_changes</span><span class="si">}</span><span class="s2">"</span>
+</pre></div>
         </article>
       </div>
     </div>
