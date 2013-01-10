@@ -33,9 +33,6 @@
       <section id="main_content" class="inner">
         <h1>Block Changes</h1>
 
-<p><a href="https://travis-ci.org/arangamani/block_changes"><img src="https://travis-ci.org/arangamani/block_changes.png?branch=master" alt="Build Status"></a>
-<a href="https://gemnasium.com/arangamani/block_changes"><img src="https://gemnasium.com/arangamani/block_changes.png" alt="Dependency Status"></a></p>
-
 <h2>Detecting changes in a Ruby block</h2>
 
 <p>The following example illustrates how to see if changes are detected in a Ruby block for the expected variables. Variables a, b, c are concerned in this example. If these variables are changed <code>changes_detected?</code> will return true. If these variables are not changes in the block <code>changes_detected?</code> will return false. This will be helpful to maintain idempotency. The following example is very simple. We'll know what variables we concern about when we write the code so passing those variables to the code will not be hard. Also we might not want to detect changes of local temporary variables defined inside the block.</p>
