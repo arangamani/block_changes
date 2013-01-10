@@ -21,5 +21,9 @@ detect_changes('a', 'b', 'c') do
   c = 4
 end
 
+# Check if changes are detected in the block
 puts "Changes Detected" if changes_detected?
+
+# Check the number variables changed in the block
+puts "No of changes: #{get_changes}"
 ```
