@@ -40,7 +40,12 @@
 
 <h2>Detecting changes in a Ruby block</h2>
 
-<p>The following example illustrates how to see if changes are detected in a Ruby block for the expected variables. Variables a, b, c are concerned in this example. If these variables are changed <code>changes_detected?</code> will return true. If these variables are not changes in the block <code>changes_detected?</code> will return false. This will be helpful to maintain idempotency. The following example is very simple. We'll know what variables we concern about when we write the code so passing those variables to the code will not be hard. Also we might not want to detect changes of local temporary variables defined inside the block.</p>
+<p>The following example illustrates how to see if changes are detected in a Ruby block for the expected variables. Variables a, b, c are concerned in this example. Just keep the code that changes the variables of your concern inside a block and pass the block to <code>detect_changes</code> and pass in these variables as a parameter to <code>detect_changes</code>. Note that these parameters should be in quotes. If these variables are changed <code>changes_detected?</code> will return true. If these variables are not changes in the block <code>changes_detected?</code> will return false. This will be helpful to maintain idempotency. The following example is very simple. We'll know what variables we concern about when we write the code so passing those variables to the code will not be hard. Also we might not want to detect changes of local temporary variables defined inside the block.</p>
+
+<p>Install the gem using the following:</p>
+
+<pre><code>gem install block_changes
+</code></pre>
 
 <div class="highlight"><pre><span class="nb">require</span> <span class="s1">'block_changes'</span>
 
@@ -63,6 +68,50 @@
 <span class="c1"># Check the number variables changed in the block</span>
 <span class="nb">puts</span> <span class="s2">"No of changes: </span><span class="si">#{</span><span class="n">get_changes</span><span class="si">}</span><span class="s2">"</span>
 </pre></div>
+
+<h2>Currently Supported and tested variable types:</h2>
+
+<ul>
+<li>Regular Ruby variables like string and Fixunm</li>
+<li>Arrays and Hashes</li>
+</ul><p>It might just work with other custom types as long as they can be compared with the <code>=</code> operator.</p>
+
+<h2>Reporting Issues:</h2>
+
+<p>If you find any issue with this project, please report them at the Github issues.</p>
+
+<h2>Contributing:</h2>
+
+<p>If you would like to contribute to this project, just do the following:</p>
+
+<ol>
+<li>Fork the repo on Github.</li>
+<li>Add your features and make commits to your forked repo.</li>
+<li>Make a pull request to this repo.</li>
+<li>Review will be done and changes will be requested.</li>
+<li>Once changes are done or no changes are required, pull request will be merged.</li>
+<li>The next release will have your changes in it.</li>
+</ol><h2>Licence:</h2>
+
+<p>Copyright (c) 2013 Kannan Manickam <a href="mailto:arangamani.kannan@gmail.com">arangamani.kannan@gmail.com</a></p>
+
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:</p>
+
+<p>The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.</p>
+
+<p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS 
+THE SOFTWARE.</p>
         </article>
       </div>
     </div>
@@ -83,18 +132,16 @@
     <p class="name"></p>
   </div>
 
-<script type="text/javascript">
+            <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-37519629-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
 
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-37519629-1']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
-</script>
 </body>
 </html>
